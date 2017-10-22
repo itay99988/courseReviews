@@ -1,0 +1,34 @@
+[
+    {
+        "num": 12345,
+        "cname": "course1",
+        "side": "East",
+        "fac": "Exact Sciences",
+        "lecture": "lecture",
+        "exam": "Exam"
+    },
+    {
+        "num": 23456,
+        "cname": "course2",
+        "side": "West",
+        "fac": "Engineering",
+        "lecture": "online course",
+        "exam": "Assignment"
+    },
+    {
+        "num": 34567,
+        "cname": "course3",
+        "side": "East",
+        "fac": "Biology",
+        "lecture": "lecture",
+        "exam": "Exam"
+    },
+    {
+        "num": 45678,
+        "cname": "course4",
+        "side": "West",
+        "fac": "Medicine",
+        "lecture": "lecture",
+        "exam": "Assignment"
+    }
+]

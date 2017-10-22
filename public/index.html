@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" ng-app="myApp" class="no-js">
+<!--<![endif]-->
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>My AngularJS App</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
+  <link rel="stylesheet" href="app.css">
+  <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+  <link href="http://www.cssscript.com/wp-includes/css/sticky.css" rel="stylesheet" type="text/css">
+  <link href="assets/css/style.css" rel="stylesheet">
+  <link data-require="bootstrap-css@*" data-semver="3.3.1" rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
+  <script>
+      document.write('<base href="' + document.location + '" />');
+  </script>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <section id="header">
+    <header>
+      <h1>חיפוש קורסים - כלים שלובים</h1>
+      <p>אוניברסיטת ת"א</p>
+    </header>
+    
+    <div ng-controller="searchController">
+      <input type="text" ng-model="searchString" placeholder="חפש קורס">
+      <table class="filters_table" dir="rtl">
+          <tr>
+            <td width="70%"> 
+                <div class="settings" align="right">
+                <div class="row">
+                    <div class="switch">
+                        <input id="cmn-toggle-1" class="cmn-toggle cmn-toggle-round" type="checkbox" ng-model="filtersOn">
+                        <label for="cmn-toggle-1"></label>
+                    </div>
+                    <div class="question">
+                        פילטרים
+                      </div>
+                  </div><!-- /row -->
+                  </div>
+            </td>
+            <td>
+              <input id="cmn-toggle-2" class="cmn-toggle cmn-toggle-yes-no" type="checkbox" ng-show="filtersOn" ng-model="side">
+              <label for="cmn-toggle-2" data-on="מערב" data-off="מזרח" ng-show="filtersOn"></label>
+            </td>
+            <td>
+              <input id="cmn-toggle-3" class="cmn-toggle cmn-toggle-yes-no" type="checkbox" ng-show="filtersOn" ng-model="exam">
+              <label for="cmn-toggle-3" data-on="עבודה" data-off="מבחן" ng-show="filtersOn"></label>
+            </td>
+        </table>
+      <table class="table" dir="rtl" padding=5>
+        <tr>
+          <th class="table__heading">פקולטה</th>
+          <th class="table__heading">מס' קורס</th>
+          <th class="table__heading">שם</th>
+          <th class="table__heading">הרצאה / מקוון</th>
+          <th class="table__heading">מבחן / עבודה</th>
+        </tr>
+        <tr class="table__row" ng-repeat="course in courses | searchFilter: searchString:filtersOn:side:exam" ng-click="loadModalForm(course)">
+          <td class="table__content" data-heading="פקולטה">{{course.fac}}</td>
+          <td class="table__content" data-heading="מס' קורס">{{course.num}}</td>
+          <td class="table__content" data-heading="שם">{{course.cname}}</td>
+          <td class="table__content" data-heading="הרצאה / מקוון">{{course.lecture}}</td>
+          <td class="table__content" data-heading="מבחן / עבודה">{{course.exam}}</td>
+        </tr>
+      </table>
+    </div>
+  </section>
+  <section id="footer">
+    <ul class="icons">
+      <li>
+        <a href="#" class="icon fa-twitter">
+          <span class="label">Twitter</span>
+        </a>
+      </li>
+      <li>
+        <a href="#" class="icon fa-facebook">
+          <span class="label">Facebook</span>
+        </a>
+      </li>
+      <li>
+        <a href="#" class="icon fa-google-plus">
+          <span class="label">Google+</span>
+        </a>
+      </li>
+      <li>
+        <a href="#" class="icon fa-pinterest">
+          <span class="label">Pinterest</span>
+        </a>
+      </li>
+      <li>
+        <a href="#" class="icon fa-dribbble">
+          <span class="label">Dribbble</span>
+        </a>
+      </li>
+      <li>
+        <a href="#" class="icon fa-linkedin">
+          <span class="label">LinkedIn</span>
+        </a>
+      </li>
+    </ul>
+  </section>
+  <!-- Scripts -->
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/jquery.scrolly.min.js"></script>
+  <script src="assets/js/jquery.poptrox.min.js"></script>
+  <script src="assets/js/skel.min.js"></script>
+  <script src="assets/js/util.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="app.js"></script>
+  <script src="components/version/version.js"></script>
+  <script src="components/version/version-directive.js"></script>
+  <script src="components/version/interpolate-filter.js"></script>
+  <script data-require="ui-bootstrap@*" data-semver="0.12.1" src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.1.min.js"></script>
+  <style>
+    input {
+      text-align: right;
+      color: rgb(112, 112, 112);
+      width: 60%;
+      height: 3rem;
+    }
+
+    ::-webkit-input-placeholder {
+      text-align: center;
+    }
+
+    @media (min-width: 32rem) {
+      .table {
+        width: 70%;
+        border: 3px;
+        border-style: solid;
+        border-color: #ffffff;
+      }
+      .filters_table {
+        border: 3px;
+        width: 60%;
+      }
+      tr:nth-child(even) {
+        background-color: #f2f2f2;
+        color: #090421
+      }
+    }
+
+    td,
+    th {
+      padding: 8px;
+      padding: .5rem;
+    }
+
+    th {
+      text-align: right;
+      font-weight: 300;
+      font-size: 20px;
+      font-size: 1.25rem;
+    }
+
+    td {
+      font-family: 'Avenir Next', 'Segoe UI', 'Lucida Grande', sans-serif;
+      text-align: right;
+    }
+
+    .table {
+      margin-left: auto;
+      margin-right: auto;
+      padding: 1px;
+    }
+
+    .filters_table {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .table__heading {
+      border-bottom: 2px solid #FFC842;
+    }
+
+    @media (max-width: 32rem) {
+      .table__heading {
+        display: none;
+      }
+      .table__content {
+        display: block;
+        padding: .2rem 0;
+      }
+      .table__row {
+        margin: .25rem 1rem;
+        padding: .3rem 0;
+        display: block;
+        border-bottom: 2px solid #FFC842;
+      }
+      .table__content:before {
+        content: attr(data-heading);
+        display: inline-block;
+        width: 8rem;
+        margin-right: .5rem;
+        color: #999;
+        font-size: .75rem;
+        font-weight: 700;
+        font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+    }
+    
+  </style>
+</body>
+</html>
