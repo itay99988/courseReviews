@@ -10,10 +10,15 @@ let app = angular.module('myApp', [
     $locationProvider.hashPrefix('!');
   }])
   .controller('searchController', ['$scope', '$http', '$window', '$modal', function ($scope, $http, $window, $modal) {
-    $http.get('./data/courses.json')
-      .then(function (res) {
-        $scope.courses = res.data;
-      });
+    $http({
+      method: "GET",
+      url: "courses"
+    }).then(function success(response) {
+      $scope.courses = response.data;
+    }, function myError(response) {
+      console.log(response.statusText);
+    });
+
     $scope.loadModalForm = function (course) {
       $scope.currentCourse = course;
       $modal.open({
@@ -28,11 +33,12 @@ let app = angular.module('myApp', [
         });
     }
   }])
-  .controller('modalController', ['$scope','$modalInstance', function ($scope,$modalInstance) {
-    $scope.closeModal = function(){
+  .controller('modalController', ['$scope', '$modalInstance', function ($scope, $modalInstance) {
+    $scope.closeModal = function () {
       $modalInstance.close();
-      }
+    }
   }]);
+
 
 app.filter('searchFilter', function () {
   return function (arr, searchString, filtersOn, side, exam) {
