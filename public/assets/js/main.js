@@ -88,7 +88,7 @@
 							else {
 
 								var p = Math.max(10, ($window.height() - $header_header.outerHeight()) / 12);
-								$header.css('padding', p + 'px 0 ' + 11*p + 'px 0');
+								$header.css('padding', p + 'px 0 ' + 2*p + 'px 0');
 
 							}
 

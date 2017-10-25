@@ -41,10 +41,11 @@ let app = angular.module('myApp', [
 
 
 app.filter('searchFilter', function () {
-  return function (arr, searchString, filtersOn, side, exam) {
+  return function (arr, searchString, filtersOn, side, exam, lecture) {
     //process filters
     let courseSide = "";
     let courseExam = "";
+    let courseLecture = "";
     if (filtersOn) {
       if (side)
         courseSide = "West";
@@ -55,6 +56,11 @@ app.filter('searchFilter', function () {
         courseExam = "Assignment";
       else
         courseExam = "Exam";
+
+      if (lecture)
+        courseLecture = "Online";
+      else
+        courseLecture = "Lecture";
     }
     //filters off and no searchword
     if ((!searchString || searchString == "") && !filtersOn) {
@@ -64,7 +70,7 @@ app.filter('searchFilter', function () {
     if ((!searchString || searchString == "") && filtersOn) {
       var result = [];
       angular.forEach(arr, function (el) {
-        if (el.side.indexOf(courseSide) != -1 && el.exam.indexOf(courseExam) != -1) {
+        if (el.side.indexOf(courseSide) != -1 && el.exam.indexOf(courseExam) != -1 && el.lecture.indexOf(courseLecture) != -1) {
           result.push(el);
         }
       });
@@ -74,7 +80,7 @@ app.filter('searchFilter', function () {
     //there is a searchword
     var result = [];
     angular.forEach(arr, function (el) {
-      if ((el.cname.toLowerCase().indexOf(searchString) != -1 || el.fac.toLowerCase().indexOf(searchString) != -1) && el.side.indexOf(courseSide) != -1 && el.exam.indexOf(courseExam) != -1) {
+      if ((el.cname.toLowerCase().indexOf(searchString) != -1 || el.fac.toLowerCase().indexOf(searchString) != -1) && el.side.indexOf(courseSide) != -1 && el.exam.indexOf(courseExam) != -1 && el.lecture.indexOf(courseLecture) != -1) {
         result.push(el);
       }
     });

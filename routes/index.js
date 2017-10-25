@@ -10,8 +10,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/courses', function(req, res, next) {
   Course.find({}, function(err, courses) {
-    if (err) res.json(200,{"error": err});
-    // object of all the courses
+    if (err) res.json(200,{error: err});
     res.json(200,courses);
   });
 });

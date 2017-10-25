@@ -25,7 +25,7 @@
 .settings .question {
   width: 60px;
   /* font-family: "Roboto Slab", serif; */
-  font-size: 14px;
+  font-size: 0.3rem;
 }
 
 /* ============================================================
@@ -35,9 +35,10 @@
   position: absolute;
   margin-left: -9999px;
   visibility: hidden;
+  max-width: 70px;
 }
 .cmn-toggle + label {
-  display: block;
+  /* display: block; */
   position: relative;
   cursor: pointer;
   outline: none;
@@ -45,6 +46,7 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  margin-left: 1.2rem;
 }
 
 /* ============================================================
@@ -52,14 +54,14 @@
 ============================================================ */
 input.cmn-toggle-round + label {
   padding: 2px;
-  width: 73px;
-  height: 30px;
+  width: 60px;
+  height: 25px;
   background-color: #dddddd;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -o-border-radius: 10px;
-  border-radius: 10px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+  border-radius: 8px;
 }
 input.cmn-toggle-round + label:before, input.cmn-toggle-round + label:after {
   display: block;
@@ -72,15 +74,15 @@ input.cmn-toggle-round + label:before, input.cmn-toggle-round + label:after {
 input.cmn-toggle-round + label:before {
   right: 1px;
   background-color: #f1f1f1;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -o-border-radius: 10px;
-  border-radius: 10px;
-  -webkit-transition: background 0.4s;
-  -moz-transition: background 0.4s;
-  -o-transition: background 0.4s;
-  transition: background 0.4s;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+  border-radius: 8px;
+  -webkit-transition: background 0.8s;
+  -moz-transition: background 0.8s;
+  -o-transition: background 0.8s;
+  transition: background 0.8s;
 }
 input.cmn-toggle-round + label:after {
   width: 30px;
@@ -102,7 +104,7 @@ input.cmn-toggle-round:checked + label:before {
   background-color: #8ce196;
 }
 input.cmn-toggle-round:checked + label:after {
-  margin-left: 40px;
+  margin-left: 28px;
 }
 
 /* ============================================================
@@ -173,8 +175,8 @@ input.cmn-toggle-round-flat:checked + label:after {
 ============================================================ */
 input.cmn-toggle-yes-no + label {
   padding: 2px;
-  width: 80px;
-  height: 30px;
+  width: 60px;
+  height: 25px;
 }
 input.cmn-toggle-yes-no + label:before, input.cmn-toggle-yes-no + label:after {
   display: block;
@@ -184,10 +186,14 @@ input.cmn-toggle-yes-no + label:before, input.cmn-toggle-yes-no + label:after {
   bottom: 0;
   right: 0;
   color: #fff;
-  /* font-family: "Roboto Slab", serif; */
-  font-size: 14px;
+  font-size: 1.2rem;
   text-align: center;
-  line-height: 30px;
+  line-height: 2.4rem;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+  border-radius: 8px;
 }
 input.cmn-toggle-yes-no + label:before {
   background-color: #f5abab;
