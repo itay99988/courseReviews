@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/coursesdb');
+mongoose.connect('mongodb://itay99988:12121212@ds039411.mlab.com:39411/coursesdb');
 
 var Schema = mongoose.Schema;
 
